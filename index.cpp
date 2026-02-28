@@ -1,31 +1,26 @@
-class Solution {
-public:
-    int concatenatedBinary(int n) {
-        //converting from 1 to n;
-        //n into their binary; 
-        //pushing them into main string;
-        string binary = "";
-        for(int i=1;i<=n;i++){
-            int num = i;
-            string s = "";
-            while(num>0){
-                int r = num%2;
-                s = s + to_string(r);
-                num = num / 2;
-            }
-            reverse(s.begin(),s.end());
-            binary.append(s);
-        }
+#include <bits/stdc++.h>
+using namespace std;
 
-        //converting binary to integer;
-        int power = 0;
-        long long decimal = 0;
+int main() {
+	// converting number to binary;
+	int num;
+	cin>>num;
+	string s = "";
+	while(num>0){
+	    s.push_back((num%2)+'0');
+	    num/=2;
+	}
+	
+	//converting binary to number;
+	long long decimal = 0;
+	for(int i=0;i<s.size();i++){
+	    decimal = (decimal * 2 + (s[i]-'0'));
+	}
+	
+	
+	cout<<"number to binary: "<<s<<endl;
+	cout<<"binary to number: "<<decimal<<endl;
+	
+	
 
-        for(int i = 0;i<=binary.size();i++,power++){
-            if(binary[i]=='1'){
-                decimal+=(int)pow(2,power);
-            }
-        }
-        return decimal;
-    }
-};
+}
